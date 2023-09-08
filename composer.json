@@ -16,6 +16,6 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1",
-        "phpluna/mvc": "dev-main"
+        "phpluna/luna": "dev-main"
     }
 }
