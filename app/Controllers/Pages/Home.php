@@ -19,17 +19,17 @@
 
             $buttons = Component::multiRender('button', [
                 [
-                    'link' => "https://jjrdev.gitbook.io/luna/",
+                    'link' => "https://github.com/jjr-dev/luna-framework/blob/main/readme.md#aprendendo-luna",
                     'icon' => "book",
                     'title' => "Documentação"
                 ],
                 [
-                    'link' => "https://github.com/jjr-dev/luna",
+                    'link' => "https://github.com/jjr-dev/luna-framework",
                     'icon' => "github",
                     'title' => "Repositório"
                 ],
                 [
-                    'link' => "#",
+                    'link' => "https://packagist.org/packages/phpluna/luna",
                     'icon' => "box-seam",
                     'title' => "Pacote"
                 ]
