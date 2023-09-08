@@ -1,0 +1,20 @@
+{
+    "name": "phpluna/luna",
+    "description": "Skeleton PHP Luna Framework",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "Julimar Jr",
+            "email": "julimargomesjr@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "phpluna/mvc": "dev-main"
+    }
+}

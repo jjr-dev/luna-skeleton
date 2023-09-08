@@ -1,0 +1,28 @@
+a {
+    text-decoration: none;
+}
+
+.btn {
+    padding: 1rem;
+}
+
+.btn i {
+    color: #95a3b3;
+    font-size: 1.75rem;
+}
+
+.btn h1 {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 400;
+}
+
+.container .d-flex {
+    height: 100vh;
+}
+
+p {
+    color: #95a3b3;
+    margin: 0;
+}
