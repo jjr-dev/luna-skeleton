@@ -18,7 +18,10 @@
     define("URL", Environment::get('URL'));
     
     // Define View Vars
-    View::define(['URL' => URL]);
+    View::define([
+        'URL' => URL,
+        'PUBLIC'  => URL . '/public'
+    ]);
 
     // Boot Database
     Database::boot();
