@@ -3,10 +3,10 @@
 
     use Luna\Utils\View;
     use Luna\Utils\Seo;
-    use Luna\Utils\Page;
+    use Luna\Utils\Controller;
     use Luna\Utils\Component;
 
-    class Home extends Page {
+    class Home extends Controller {
         static function homePage($req, $res) {
             $title = 'Luna';
 
@@ -40,7 +40,7 @@
                 'version' => "v2.0"
             ]);
             
-            $content = parent::getPage($title, $content, ['seo' => $seo]);
+            $content = parent::page($title, $content, ['seo' => $seo]);
 
             return $res->send(200, $content);
         }

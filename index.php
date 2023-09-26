@@ -1,5 +1,7 @@
 <?php
-    require __DIR__ . '/vendor/autoload.php';
+    date_default_timezone_set("America/Sao_Paulo");
+
+    require __DIR__ . '/bootstrap.php';
 
     // Load Dependencies
     use Luna\Utils\View;
@@ -8,12 +10,6 @@
     use Luna\Http\Router;
     use Luna\Db\Database;
 
-    // Define Root Directory
-    define("ROOT_DIR", __DIR__);
-
-    // Load Environment
-    Environment::load(ROOT_DIR);
-    
     // Define URL Global Var
     define("URL", Environment::get('URL'));
     
