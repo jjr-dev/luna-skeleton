@@ -2,3 +2,18 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ ./index.php [QSA,NC]
+
+<FilesMatch ".*\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files .env>
+    Order Allow,Deny
+    Deny from all
+</Files>
