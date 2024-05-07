@@ -27,3 +27,13 @@
 
     // Enable Foreign Key Checks
     DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+    // Luna Log Table
+    DB::schema()->dropIfExists('logs');
+    DB::schema()->create('logs', function (Blueprint $table) {
+        $table->id();
+        $table->string('public_id');
+        $table->tinyText('code');
+        $table->text('message');
+        $table->timestamp('created_at');
+    });
