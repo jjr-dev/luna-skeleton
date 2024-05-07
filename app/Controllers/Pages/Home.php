@@ -37,7 +37,7 @@
 
             $content = View::render('home', [
                 'buttons' => $buttons,
-                'version' => "v2.0"
+                'version' => "v2.0.3"
             ]);
             
             $content = parent::page($title, $content, ['seo' => $seo]);
