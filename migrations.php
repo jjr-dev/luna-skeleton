@@ -33,7 +33,7 @@
     DB::schema()->create('logs', function (Blueprint $table) {
         $table->id();
         $table->string('public_id');
-        $table->tinyText('code');
         $table->text('message');
+        $table->tinyText('code')->nullable();
         $table->timestamp('created_at');
     });
