@@ -5,4 +5,3 @@ composer.lock
 .vscode
 .env
 /cache
-/database/migrations/*
