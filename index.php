@@ -17,9 +17,6 @@
         'PUBLIC'  => URL . '/public'
     ]);
 
-    // Boot Database
-    Database::boot();
-
     // Define Middlewares
     Middleware::setMap([]);
     Middleware::setDefault([]);

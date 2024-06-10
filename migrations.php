@@ -1,9 +1,6 @@
 <?php
     require __DIR__ . '/bootstrap.php';
 
-    use Luna\Db\Database;
-    Database::boot(true);
-    
     use Illuminate\Database\Capsule\Manager as DB;
     use Illuminate\Database\Schema\Blueprint;
 
