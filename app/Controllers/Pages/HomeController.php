@@ -37,7 +37,7 @@ class HomeController extends Controller {
 
         $content = View::render('home', [
             'buttons' => $buttons,
-            'version' => "v2.0.3"
+            'version' => "v2.0.4"
         ]);
         
         $content = parent::page($title, $content, ['seo' => $seo]);
