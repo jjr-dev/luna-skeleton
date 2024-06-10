@@ -14,6 +14,7 @@ class LunaCLI extends CLI {
         $options->registerOption('table', 'Table name', 't', true, 'make:migration');
 
         $options->registerCommand('migrate', 'Run migration');
+        $options->registerArgument('name', 'Migration file name', false, 'migrate');
 
         $options->registerCommand('migrate:rollback', 'Rollback last migration');
 
@@ -40,8 +41,12 @@ class LunaCLI extends CLI {
                 break;
             case 'migrate':
                 $this->info('Running migration');
-                
-                $filenames = Migrate::run(__DIR__ . '/database/migrations');
+
+                $args = $options->getArgs();
+
+                $name = isset($args[0]) ? $args[0] : false;
+
+                $filenames = Migrate::run(__DIR__ . '/database/migrations', $name);
 
                 if(count($filenames) > 0) {
                     foreach($filenames as $filename) {
