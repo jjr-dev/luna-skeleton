@@ -71,7 +71,17 @@ class LunaCLI extends CLI {
                 if(!$options->getOpt('confirm'))
                     return $this->error('Type "migrate:fresh --confirm" or "migrate:fresh -c" for confirm database cleanup');
 
-                Migrate::fresh('database/migrations');
+                $this->info('Running fresh migration');
+
+                $filenames = Migrate::fresh('database/migrations');
+
+                if(count($filenames) > 0) {
+                    foreach($filenames as $filename) {
+                        $this->success($filename);
+                    }
+                } else {
+                    $this->notice('Database already updated');
+                }
                 break;
             default:
                 $options->useCompactHelp(true);
