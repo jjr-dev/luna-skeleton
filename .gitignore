@@ -6,4 +6,3 @@ composer.lock
 .env
 /cache
 /database/migrations/*
-!/database/migrations/.gitkeep
