@@ -6,7 +6,7 @@ use Luna\Utils\Seo;
 use Luna\Utils\Controller;
 use Luna\Utils\Component;
 
-class Home extends Controller {
+class HomeController extends Controller {
     static function homePage($req, $res) {
         $title = 'Luna';
 

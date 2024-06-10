@@ -3,6 +3,6 @@ use App\Controllers\Pages;
 
 $router->get('/', [
     function($request, $response) {
-        return Pages\Home::homePage($request, $response);
+        return Pages\HomeController::homePage($request, $response);
     }
 ]);
