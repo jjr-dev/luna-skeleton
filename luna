@@ -1,0 +1,85 @@
+<?php
+require __DIR__ . '/bootstrap.php';
+
+use Luna\Db\Migrate;
+use splitbrain\phpcli\CLI;
+use splitbrain\phpcli\Options;
+
+class LunaCLI extends CLI {
+    protected function setup(Options $options) {
+        $options->setHelp('Luna Framework');
+        
+        $options->registerCommand('make:migration', 'Create a migration file');
+        $options->registerArgument('name', 'Migration file name', true, 'make:migration');
+        $options->registerOption('table', 'Table name', 't', true, 'make:migration');
+
+        $options->registerCommand('migrate', 'Run migration');
+        $options->registerArgument('name', 'Migration file name', false, 'migrate');
+
+        $options->registerCommand('migrate:rollback', 'Rollback last migration');
+
+        $options->registerCommand('migrate:fresh', 'Clear database and run migration');
+        $options->registerOption('confirm', 'Confirm clear database', 'c', false, 'migrate:fresh');
+    }
+
+    protected function main(Options $options) {
+        switch($options->getCmd()) {
+            case 'make:migration':
+                $args = $options->getArgs();
+                $table = $options->getOpt('table');
+
+                $name = isset($args[0]) ? $args[0] : false;
+
+                if(!$name)
+                    return $this->error('Migration name not found');
+
+                $filename = Migrate::create('database/migrations', $name, $table);
+
+                $this->info('Migration ' . $name . ' created: ' . $filename);
+                break;
+            case 'migrate':
+                $this->info('Running migration');
+
+                $args = $options->getArgs();
+
+                $name = isset($args[0]) ? $args[0] : false;
+
+                $filenames = Migrate::run('database/migrations', $name);
+
+                if(count($filenames) > 0) {
+                    foreach($filenames as $filename) {
+                        $this->success($filename);
+                    }
+                } else {
+                    $this->notice('Database already updated');
+                }
+                break;
+            case 'migrate:rollback':
+                $this->info('Running migration rollback');
+
+                $filenames = Migrate::rollback('database/migrations');
+
+                if(count($filenames) > 0) {
+                    foreach($filenames as $filename) {
+                        $this->success($filename);
+                    }
+                } else {
+                    $this->notice('Database without migrations');
+                }
+                break;
+            case 'migrate:fresh':
+                if(!$options->getOpt('confirm'))
+                    return $this->error('Type "migrate:fresh --confirm" or "migrate:fresh -c" for confirm database cleanup');
+
+                Migrate::fresh('database/migrations');
+                break;
+            default:
+                $options->useCompactHelp(true);
+                echo $options->help();
+                break;
+        }
+    }
+}
+
+$cli = new LunaCLI();
+$cli->run();
