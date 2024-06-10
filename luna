@@ -20,8 +20,6 @@ class LunaCLI extends CLI {
 
         $options->registerCommand('migrate:fresh', 'Clear database and run migration');
         $options->registerOption('confirm', 'Confirm clear database', 'c', false, 'migrate:fresh');
-
-        $options->registerOption('compact', 'Display the help text in a more compact manner', 'c');
     }
 
     protected function main(Options $options) {
@@ -76,7 +74,7 @@ class LunaCLI extends CLI {
                 Migrate::fresh(__DIR__ . '/database/migrations');
                 break;
             default:
-                $options->useCompactHelp($options->getOpt('compact'));
+                $options->useCompactHelp(true);
                 echo $options->help();
                 break;
         }
