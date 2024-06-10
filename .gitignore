@@ -5,3 +5,5 @@ composer.lock
 .vscode
 .env
 /cache
+/database/migrations/*
+!/database/migrations/.gitkeep
