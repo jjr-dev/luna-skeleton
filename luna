@@ -33,7 +33,7 @@ class LunaCLI extends CLI {
                 if(!$name)
                     return $this->error('Migration name not found');
 
-                $filename = Migrate::create(__DIR__ . '/database/migrations/', $name, $table);
+                $filename = Migrate::create('database/migrations', $name, $table);
 
                 $this->info('Migration ' . $name . ' created: ' . $filename);
                 break;
@@ -44,7 +44,7 @@ class LunaCLI extends CLI {
 
                 $name = isset($args[0]) ? $args[0] : false;
 
-                $filenames = Migrate::run(__DIR__ . '/database/migrations', $name);
+                $filenames = Migrate::run('database/migrations', $name);
 
                 if(count($filenames) > 0) {
                     foreach($filenames as $filename) {
@@ -57,7 +57,7 @@ class LunaCLI extends CLI {
             case 'migrate:rollback':
                 $this->info('Running migration rollback');
 
-                $filenames = Migrate::rollback(__DIR__ . '/database/migrations');
+                $filenames = Migrate::rollback('database/migrations');
 
                 if(count($filenames) > 0) {
                     foreach($filenames as $filename) {
@@ -71,7 +71,7 @@ class LunaCLI extends CLI {
                 if(!$options->getOpt('confirm'))
                     return $this->error('Type "migrate:fresh --confirm" or "migrate:fresh -c" for confirm database cleanup');
 
-                Migrate::fresh(__DIR__ . '/database/migrations');
+                Migrate::fresh('database/migrations');
                 break;
             default:
                 $options->useCompactHelp(true);
