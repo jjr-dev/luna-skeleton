@@ -19,28 +19,30 @@ class HomeController extends Controller {
 
         $buttons = Component::multiRender('button', [
             [
-                'link' => "https://github.com/jjr-dev/luna-framework/blob/main/readme.md#aprendendo-luna",
-                'icon' => "book",
+                'link' => "https://github.com/jjr-dev/luna-framework/tree/{{version}}/readme.md#aprendendo-luna",
+                'icon' => "graduation-cap",
                 'title' => "Documentação"
             ],
             [
                 'link' => "https://github.com/jjr-dev/luna-framework",
                 'icon' => "github",
-                'title' => "Repositório"
+                'title' => "GitHub"
             ],
             [
                 'link' => "https://packagist.org/packages/phpluna/luna",
-                'icon' => "box-seam",
-                'title' => "Pacote"
+                'icon' => "package",
+                'title' => "Packagist"
             ]
         ]);
 
         $content = View::render('home', [
             'buttons' => $buttons,
-            'version' => "v2.0.4"
+            'version' => "v2.0.5"
         ]);
-        
-        $content = parent::page($title, $content, ['seo' => $seo]);
+
+        $content = parent::page($title, $content, [
+            'seo' => $seo,
+        ]);
 
         return $res->send(200, $content);
     }
