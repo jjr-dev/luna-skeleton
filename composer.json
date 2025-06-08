@@ -15,8 +15,8 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=7.1",
-        "phpluna/framework": "^2.0.6",
+        "php": ">=8.0",
+        "phpluna/framework": "^2.0.7",
         "splitbrain/php-cli": "^1.3"
     }
 }
