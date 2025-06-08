@@ -1,14 +1,21 @@
 <?php
+
 namespace App\Controllers\Pages;
 
+use Luna\Http\Request;
+use Luna\Http\Response;
 use Luna\Utils\View;
 use Luna\Utils\Seo;
 use Luna\Utils\Controller;
 use Luna\Utils\Component;
 
-class HomeController extends Controller {
-    static function homePage($req, $res) {
-        $title = 'Luna';
+class HomeController extends Controller
+{
+    static function show(Request $req, Response $res)
+    {
+        $version = "v2.0.5";
+        
+        $title = 'Luna Framework - ' . $version;
 
         $seo = new Seo();
         $seo->setTitle($title);
@@ -37,7 +44,7 @@ class HomeController extends Controller {
 
         $content = View::render('home', [
             'buttons' => $buttons,
-            'version' => "v2.0.5"
+            'version' => $version
         ]);
 
         $content = parent::page($title, $content, [
