@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     static function show(Request $req, Response $res)
     {
-        $version = "v2.0.5";
+        $version = "v2.0.6";
         
         $title = 'Luna Framework - ' . $version;
 
